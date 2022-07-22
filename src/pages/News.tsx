@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BreakingNews from "../assets/BreakingNews.jpg";
@@ -47,7 +48,12 @@ const News: React.FC<{}> = () => {
   }, [params.name]);
 
   return (
-    <div className="bg-slate-50 rounded-xl p-5">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="flex flex-col">
         <div className="pb-3">
           <h2 className="font-bold text-2xl text-center">{news?.title}</h2>
@@ -102,7 +108,7 @@ const News: React.FC<{}> = () => {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
